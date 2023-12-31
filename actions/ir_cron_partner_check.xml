@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_partner_check" model="ir.cron">
+        <field name="name">Partner; check documents</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field>
+        <!-- <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field> -->
+        <field name="numbercall">-1</field>
+        <field name="nextcall" eval="(DateTime.now().replace(day=1) + timedelta(days=30)).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="doall" eval="False"/>
+        <field name="model_id" ref="model_res_partner"/>
+        <field name="code">model.set_docs_check()</field>
+        <field name="state">code</field>
+    </record>
+</odoo>
